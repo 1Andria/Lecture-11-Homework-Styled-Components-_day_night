@@ -12,6 +12,9 @@ export const HiddenInfo = styled.div`
   backdrop-filter: blur(20px);
   align-items: center;
   padding-left: 156px;
+  @media (max-width: 1150px) {
+    padding-left: 50px;
+  }
 `;
 
 export const ZoneYear = styled.div`
@@ -19,6 +22,9 @@ export const ZoneYear = styled.div`
   flex-direction: column;
   gap: 40px;
   margin-right: 148px;
+  @media (max-width: 1150px) {
+    margin-right: 50px;
+  }
 `;
 
 export const Weeks = styled.div`

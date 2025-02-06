@@ -3,7 +3,11 @@ import "../../App.css";
 import Forest from "../../assets/Images/Forest.png";
 import { Container, Content } from "../../__Organism/Container/Container";
 import { Author, DivTxt, Rev, Txt } from "../../__Atom/Text/Text";
-import { InfoDiv, SunMorning } from "../../__Molecule/Information/Information";
+import {
+  BelowDiv,
+  InfoDiv,
+  SunMorning,
+} from "../../__Molecule/Information/Information";
 import Sun from "../../assets/Images/Sun.png";
 import Reverse from "../../assets/Images/reverse.png";
 import { ArrowMore, Button } from "../../__Atom/Button/Button";
@@ -145,7 +149,7 @@ function MainContainer() {
               {!quote ? "Ada Lovelace" : "Pythagoras"}
             </Author>
           </DivTxt>
-          <div className="below">
+          <BelowDiv>
             <InfoDiv>
               <SunMorning>
                 <img
@@ -175,7 +179,7 @@ function MainContainer() {
                 />
               </ArrowMore>
             </Button>
-          </div>
+          </BelowDiv>
         </Content>
         <HiddenInfo clicked={clicked} night={night}>
           <ZoneYear>

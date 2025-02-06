@@ -8,6 +8,9 @@ export const DivTxt = styled.div`
   flex-direction: column;
   gap: 10px;
   height: ${(props) => (props.clicked ? "0px" : "auto")};
+  @media (max-width: 1150px) {
+    margin-left: 50px;
+  }
 `;
 
 export const Txt = styled.p`
