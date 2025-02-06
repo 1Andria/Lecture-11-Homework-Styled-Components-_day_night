@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export async function success(position, { setLocation, setContinent }) {
+export async function success(position, setLocation, setContinent) {
   const latitude = position.coords.latitude;
   const longitude = position.coords.longitude;
   const API_KEY = "4cf5d409c0414717b0e39cc6b8b57946";

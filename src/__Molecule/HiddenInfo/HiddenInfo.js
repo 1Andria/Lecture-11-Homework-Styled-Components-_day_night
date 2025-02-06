@@ -15,6 +15,17 @@ export const HiddenInfo = styled.div`
   @media (max-width: 1150px) {
     padding-left: 50px;
   }
+  @media (max-width: 860px) {
+    height: ${(props) => (props.clicked ? "340px" : "0px")};
+  }
+  @media (max-width: 600px) {
+    display: flex;
+    flex-direction: column;
+    padding-left: 0px;
+    align-items: start;
+    justify-content: space-evenly;
+    height: ${(props) => (props.clicked ? "256px" : "0px")};
+  }
 `;
 
 export const ZoneYear = styled.div`
@@ -25,10 +36,20 @@ export const ZoneYear = styled.div`
   @media (max-width: 1150px) {
     margin-right: 50px;
   }
+  @media (max-width: 600px) {
+    margin: 0px;
+    width: 100%;
+    display: ${(props) => (props.clicked ? "block" : "none")};
+  }
 `;
 
 export const Weeks = styled.div`
   display: flex;
   flex-direction: column;
   gap: 40px;
+  @media (max-width: 600px) {
+    margin: 0px;
+    width: 100%;
+    display: ${(props) => (props.clicked ? "block" : "none")};
+  }
 `;

@@ -1,16 +1,32 @@
 import React, { useEffect, useState } from "react";
 import "../../App.css";
 import Forest from "../../assets/Images/Forest.png";
-import { Container, Content } from "../../__Organism/Container/Container";
+import {
+  BackgroundImage,
+  Container,
+  Content,
+} from "../../__Organism/Container/Container";
 import { Author, DivTxt, Rev, Txt } from "../../__Atom/Text/Text";
 import {
   BelowDiv,
+  BST,
+  Clock,
+  ClockBST,
+  DayTime,
   InfoDiv,
+  InformationalDiv,
+  Locat,
+  SunMoon,
   SunMorning,
 } from "../../__Molecule/Information/Information";
 import Sun from "../../assets/Images/Sun.png";
 import Reverse from "../../assets/Images/reverse.png";
-import { ArrowMore, Button } from "../../__Atom/Button/Button";
+import {
+  ArrowMore,
+  ArrowRotate,
+  Button,
+  MoreLess,
+} from "../../__Atom/Button/Button";
 import Arrow from "../../assets/Images/Arrow.png";
 import Night from "../../assets/Images/Night.png";
 import Moon from "../../assets/Images/Moon.png";
@@ -75,9 +91,12 @@ function MainContainer() {
 
   function GetLocation() {
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(success, error);
+      navigator.geolocation.getCurrentPosition(
+        (position) => success(position, setLocation, setContinent),
+        () => setLocation("Location permission denied")
+      );
     } else {
-      alert("Geolocation not supported");
+      alert("Geolocation not found");
     }
   }
 
@@ -114,7 +133,7 @@ function MainContainer() {
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(
-      (position) => success(position, { setLocation, setContinent }),
+      (position) => success(position, setLocation, setContinent),
       (error) => {
         setLocation("Location not found");
       }
@@ -128,10 +147,10 @@ function MainContainer() {
   return (
     <>
       <Container>
-        <img className="forest" src={night ? Night : Forest} />
+        <BackgroundImage src={night ? Night : Forest}></BackgroundImage>
         <Content clicked={clicked}>
           <DivTxt clicked={clicked}>
-            <div className="text_change">
+            <InformationalDiv>
               <Txt clicked={clicked}>
                 {!quote
                   ? " “The science of operations, as derived from mathematics more especially, is a science of itself, and has its own abstract truth and value.” "
@@ -144,7 +163,7 @@ function MainContainer() {
                 clicked={clicked}
                 alt="Reverse"
               ></Rev>
-            </div>
+            </InformationalDiv>
             <Author clicked={clicked}>
               {!quote ? "Ada Lovelace" : "Pythagoras"}
             </Author>
@@ -152,37 +171,37 @@ function MainContainer() {
           <BelowDiv>
             <InfoDiv>
               <SunMorning>
-                <img
-                  className="sun"
+                <SunMoon
                   src={night ? Moon : Sun}
                   alt={night ? "Moon" : "Sun"}
-                />
-                <p className="morning">
+                ></SunMoon>
+
+                <DayTime>
                   {night
                     ? "GOOD EVENING, IT’S CURRENTLY"
                     : "GOOD MORNING, IT’S CURRENTLY"}
-                </p>
+                </DayTime>
               </SunMorning>
-              <div className="flex">
-                <h1 className="time">{time}</h1>
-                <h1 className="BST">BST</h1>
-              </div>
-              <h1 className="location"> IN {location}</h1>
+              <ClockBST>
+                <Clock>{time}</Clock>
+                <BST>BST</BST>
+              </ClockBST>
+              <Locat>IN {location}</Locat>
             </InfoDiv>
             <Button onClick={Click}>
-              <p className="more">MORE</p>
+              <MoreLess>{clicked ? "Less" : "More"}</MoreLess>
               <ArrowMore>
-                <img
+                <ArrowRotate
                   src={Arrow}
-                  className={clicked ? "arrow" : "arrow_plus"}
                   alt="Arrow"
-                />
+                  clicked={clicked}
+                ></ArrowRotate>
               </ArrowMore>
             </Button>
           </BelowDiv>
         </Content>
         <HiddenInfo clicked={clicked} night={night}>
-          <ZoneYear>
+          <ZoneYear clicked={clicked}>
             <Timezone>
               <CurrTimezone clicked={clicked} night={night}>
                 CURRENT TIMEZONE
@@ -201,7 +220,7 @@ function MainContainer() {
             </DayofYear>
           </ZoneYear>
           <Line clicked={clicked} night={night}></Line>
-          <Weeks>
+          <Weeks clicked={clicked}>
             <DayOfWeek>
               <WeekDay clicked={clicked} night={night}>
                 Day of the week

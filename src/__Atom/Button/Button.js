@@ -11,6 +11,14 @@ export const Button = styled.button`
   align-items: center;
   margin-bottom: -20px;
   cursor: pointer;
+  @media (max-width: 860px) {
+    margin-left: 50px;
+  }
+  @media (max-width: 600px) {
+    margin-left: 26px;
+    width: 115px;
+    height: 39px;
+  }
 `;
 
 export const ArrowMore = styled.div`
@@ -21,4 +29,28 @@ export const ArrowMore = styled.div`
   justify-content: center;
   align-items: center;
   background-color: #303030;
+  @media (max-width: 600px) {
+    width: 32px;
+    height: 32px;
+  }
+`;
+
+export const MoreLess = styled.p`
+  color: #000;
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 28px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  opacity: 0.6;
+  @media (max-width: 600px) {
+    font-size: 12px;
+  }
+`;
+
+export const ArrowRotate = styled.img`
+  transition: 0.5s;
+  transform: ${(props) => (props.clicked ? "rotate(-180deg)" : "rotate(0deg)")};
 `;
