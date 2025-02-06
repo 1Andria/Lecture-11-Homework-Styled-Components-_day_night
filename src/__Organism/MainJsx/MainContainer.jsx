@@ -28,6 +28,7 @@ import {
   NumWeek,
   WeekNumber,
 } from "../../__Atom/WeekNumber/WeekNumber";
+import { success } from "../../Services/Api";
 
 function MainContainer() {
   const [time, setTime] = useState(GetCurrentTime());
@@ -68,6 +69,14 @@ function MainContainer() {
     return Math.ceil(diff / oneWeek);
   }
 
+  function GetLocation() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(success, error);
+    } else {
+      alert("Geolocation not supported");
+    }
+  }
+
   function error() {
     setLocation("Location permission denied");
   }
@@ -100,46 +109,18 @@ function MainContainer() {
   }, []);
 
   useEffect(() => {
+    navigator.geolocation.getCurrentPosition(
+      (position) => success(position, { setLocation, setContinent }),
+      (error) => {
+        setLocation("Location not found");
+      }
+    );
+  }, []);
+
+  useEffect(() => {
     GetLocation();
   }, []);
 
-  function GetLocation() {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(success, error);
-    } else {
-      alert("Geolocation not supported");
-    }
-  }
-
-  async function success(position) {
-    const latitude = position.coords.latitude;
-    const longitude = position.coords.longitude;
-    const API_KEY = "4cf5d409c0414717b0e39cc6b8b57946";
-
-    try {
-      const response = await fetch(
-        `https://api.opencagedata.com/geocode/v1/json?q=${latitude}+${longitude}&key=${API_KEY}`
-      );
-      const data = await response.json();
-      console.log(data);
-
-      if (data.results.length > 0) {
-        const city =
-          data.results[0].components.city ||
-          data.results[0].components.town ||
-          data.results[0].components.village;
-
-        const country = data.results[0].components.country;
-        const continent = data.results[0].components.continent;
-        setLocation(`${city}, ${country}`);
-        setContinent(`${continent}/${city}`);
-      } else {
-        setLocation("Location not found");
-      }
-    } catch (error) {
-      setLocation("Failed to fetch location");
-    }
-  }
   return (
     <>
       <Container>
