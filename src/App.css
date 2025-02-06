@@ -27,6 +27,11 @@
   width: 24px;
   height: 24px;
 }
+.text_change{
+  display: flex;
+  align-items: start;
+  gap: 5px;
+}
 .morning{
   color: #FFF;
   font-family: Inter;

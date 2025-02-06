@@ -3,10 +3,10 @@ import styled from "styled-components";
 export const HiddenInfo = styled.div`
   display: flex;
   width: 100%;
-  height: ${(props) => (props.clicked ? "350px" : "0px")};
+  height: ${(props) => (props.clicked ? "400px" : "0px")};
   position: absolute;
   bottom: 0;
-  transition: 0.2s ease-in-out;
+  transition: 0.1;
   background-color: ${(props) =>
     props.night ? "rgba(0, 0, 0, 0.75)" : "rgba(255, 255, 255, 0.75)"};
   backdrop-filter: blur(20px);

@@ -11,6 +11,6 @@ export const Content = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  transition: 0.2s ease-in-out;
+  transition: 0.1s;
   padding-bottom: ${(props) => (props.clicked ? "400px" : "0px")};
 `;
