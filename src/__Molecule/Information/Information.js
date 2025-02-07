@@ -98,9 +98,11 @@ export const BST = styled.h5`
   margin-left: 16px;
   @media (max-width: 860px) {
     font-size: 18px;
+    margin-bottom: 10px;
   }
-  @media (max-width: 860px) {
+  @media (max-width: 600px) {
     font-size: 15px;
+    margin-bottom: 5px;
   }
 `;
 
