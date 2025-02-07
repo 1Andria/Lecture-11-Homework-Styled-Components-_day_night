@@ -25,7 +25,7 @@ export const BelowDiv = styled.div`
     display: flex;
     flex-direction: column;
     align-items: start;
-    gap: 50px;
+    gap: 20px;
   }
 `;
 
@@ -78,9 +78,11 @@ export const Clock = styled.h1`
   letter-spacing: -5px;
   @media (max-width: 860px) {
     font-size: 175px;
+    line-height: 175px;
   }
-  @media (max-width: 860px) {
+  @media (max-width: 600px) {
     font-size: 100px;
+    line-height: 100px;
   }
 `;
 
