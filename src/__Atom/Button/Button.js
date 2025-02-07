@@ -13,6 +13,7 @@ export const Button = styled.button`
   cursor: pointer;
   @media (max-width: 860px) {
     margin-left: 50px;
+    margin-bottom: 0px;
   }
   @media (max-width: 600px) {
     margin-left: 26px;
