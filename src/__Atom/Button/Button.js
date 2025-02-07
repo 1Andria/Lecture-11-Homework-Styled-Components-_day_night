@@ -13,12 +13,13 @@ export const Button = styled.button`
   cursor: pointer;
   @media (max-width: 860px) {
     margin-left: 50px;
-    margin-bottom: 0px;
+    margin-bottom: 10px;
   }
   @media (max-width: 600px) {
     margin-left: 26px;
     width: 115px;
     height: 39px;
+    margin-bottom: 7px;
   }
 `;
 
