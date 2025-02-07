@@ -19,7 +19,7 @@ export const Button = styled.button`
     margin-left: 26px;
     width: 115px;
     height: 39px;
-    margin-bottom: 7px;
+    margin-bottom: 10px;
   }
 `;
 
